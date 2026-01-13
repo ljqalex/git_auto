@@ -1,0 +1,7 @@
+创建
+python set.py "C:\Users\Administrator\Desktop\re" hello
+
+删除
+python set.py delete hello
+
+默认私有
