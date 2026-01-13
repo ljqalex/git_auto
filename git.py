@@ -8,7 +8,7 @@ import json
 
 # ====== 配置区（请修改为你自己的信息）======
 GITHUB_USERNAME = "ljqalex"
-GITHUB_TOKEN = "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"  # ←←← 替换为你的 GitHub Token
+GITHUB_TOKEN = "123"  # ←←← 替换为你的 GitHub Token
 # =========================================
 
 def run_cmd(cmd, cwd=None):
