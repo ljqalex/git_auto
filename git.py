@@ -11,8 +11,21 @@ GITHUB_TOKEN = "123"  # ←←← 替换为你的有效 GitHub Token
 # ===============================================
 
 def run_cmd(cmd, cwd=None):
-    result = subprocess.run(cmd, shell=True, cwd=cwd, capture_output=True, text=True)
-    return result.returncode, result.stdout.strip(), result.stderr.strip()
+    result = subprocess.run(cmd, shell=True, cwd=cwd, 
+                          capture_output=True, 
+                          text=False)
+    
+    try:
+        stdout = result.stdout.decode('utf-8', errors='replace') if result.stdout else ''
+    except:
+        stdout = str(result.stdout) # 极端情况转字符串
+    
+    try:
+        stderr = result.stderr.decode('utf-8', errors='replace') if result.stderr else ''
+    except:
+        stderr = str(result.stderr)
+        
+    return result.returncode, stdout.strip() if stdout else '', stderr.strip() if stderr else ''
 
 def is_git_repo(path):
     code, _, _ = run_cmd("git rev-parse --is-inside-work-tree", cwd=path)
